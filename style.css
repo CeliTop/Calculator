@@ -27,6 +27,7 @@ body {
   border: 5px solid gray;
   box-shadow: black 0 0 10px 0;
   border-radius: 10px;
+  position: relative;
 }
 
 .screen {
@@ -95,4 +96,24 @@ button:active {
 .clear {
   background-color: black;
   color: white;
+}
+
+.history {
+  position: absolute;
+  width: 20em;
+  height: 100%;
+  background-color: white;
+  left: -30em;
+  top: -10px;
+  padding: 0.5em;
+  border: 2px solid gray;
+  box-shadow: black 0 0 3px 0;
+  border-radius: 5px;
+  overflow: scroll;
+}
+
+.history li {
+  padding: 1em 1em 0.1em 1em;
+  border-bottom: 1px solid grey;
+  list-style: none;
 }

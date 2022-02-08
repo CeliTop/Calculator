@@ -1,6 +1,7 @@
 const buttons = document.querySelectorAll("button");
 const result = document.querySelector(".result");
 const screen = document.querySelector(".screen");
+const history = document.querySelector(".history");
 //Populate the grid
 buttons.forEach((button) => (button.style.gridArea = button.classList[0]));
 
@@ -8,6 +9,7 @@ buttons.forEach((button) => (button.style.gridArea = button.classList[0]));
 let left_value = 0;
 let right_value = 0;
 let operator = "+";
+let updatehistory = false;
 
 function handleNumber(number) {
   right_value *= 10;
@@ -15,6 +17,8 @@ function handleNumber(number) {
   display(right_value);
 }
 function handleOperation(newOp) {
+  //Infos for the history
+  let operationstr = `${left_value} ${operator} ${right_value} = `;
   //We do the operations with the left and right values
   switch (operator) {
     case "+":
@@ -30,6 +34,7 @@ function handleOperation(newOp) {
       left_value = Math.round((left_value / right_value) * 1000) / 1000;
       break;
   }
+  operationstr += `${left_value}`;
   operator = newOp;
   //We display the new operator
   switch (operator) {
@@ -47,6 +52,15 @@ function handleOperation(newOp) {
       break;
   }
   right_value = 0;
+
+  //Update the history
+  if (!updatehistory) {
+    updatehistory = true;
+  } else {
+    let item = document.createElement("li");
+    item.textContent = operationstr;
+    history.appendChild(item);
+  }
 }
 function handleResult() {
   handleOperation();
@@ -55,6 +69,7 @@ function handleResult() {
   right_value = left_value;
   left_value = 0;
   operator = "+";
+  updatehistory = false;
 }
 function handleAC() {
   right_value = 0;
@@ -65,18 +80,22 @@ function handleClear() {
   right_value = 0;
   operator = "+";
   display(0);
+  while (history.firstChild) {
+    history.removeChild(history.lastChild);
+  }
+  updatehistory = false;
 }
 
 function display(char) {
   result.innerText = char;
   screen.classList.add("active");
-  console.log(screen);
   setTimeout(() => {
     screen.classList.remove("active");
   }, 50);
 }
 
 function handleKeyPressed(event) {
+  console.log(event.key);
   switch (true) {
     case 0 <= parseInt(event.key) && parseInt(event.key) <= 9:
       handleNumber(event.key);
@@ -119,6 +138,7 @@ buttons.forEach((button) => {
 });
 
 document.addEventListener("keydown", (e) => {
+  e.preventDefault();
   if (!e.repeat) {
     handleKeyPressed(e);
   }
