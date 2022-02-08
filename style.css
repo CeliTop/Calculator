@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(255, 152, 34);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1vw;
+}
+@media (max-width: 50em) {
+  body {
+    font-size: 2.5vw;
+  }
+}
+.calculator {
+  background-color: rgb(255, 255, 255);
+  padding: 1.2em;
+  border: 5px solid gray;
+  box-shadow: black 0 0 10px 0;
+  border-radius: 10px;
+}
+
+.screen {
+  background-color: rgb(170, 202, 169);
+  text-align: right;
+  margin: 1em;
+  padding: 0.5em;
+  border: 2px solid gray;
+  box-shadow: black 0 3px 3px 0;
+  border-radius: 5px;
+}
+
+.result {
+  font-size: 5em;
+  margin-right: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-areas:
+    "ac ac clear clear"
+    "seven eight nine plus"
+    "four five six minus"
+    "one two three multiply"
+    "zero equal equal divide ";
+}
+
+button {
+  margin: 0.2em;
+  font-size: 3em;
+  border: 0;
+  border-bottom: 2px solid rgb(189, 173, 173);
+  border-left: 2px solid rgb(189, 173, 173);
+  border-top: 1px solid rgb(189, 173, 173);
+  border-right: 1px solid rgb(189, 173, 173);
+  box-shadow: black 0 2px 2px 0;
+  border-radius: 5px;
+}
+
+.number {
+  background-color: white;
+  width: 1.8em;
+  height: 1.8em;
+}
+.operation {
+  background-color: rgb(255, 152, 34);
+  width: 2em;
+}
+.equal {
+  background-color: tomato;
+}
+.ac {
+  background-color: black;
+  color: white;
+}
+.clear {
+  background-color: lightblue;
+}
