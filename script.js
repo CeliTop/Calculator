@@ -1,5 +1,6 @@
 const buttons = document.querySelectorAll("button");
 const result = document.querySelector(".result");
+const screen = document.querySelector(".screen");
 //Populate the grid
 buttons.forEach((button) => (button.style.gridArea = button.classList[0]));
 
@@ -68,10 +69,14 @@ function handleClear() {
 
 function display(char) {
   result.innerText = char;
+  screen.classList.add("active");
+  console.log(screen);
+  setTimeout(() => {
+    screen.classList.remove("active");
+  }, 50);
 }
 
 function handleKeyPressed(event) {
-  console.log(event.key);
   switch (true) {
     case 0 <= parseInt(event.key) && parseInt(event.key) <= 9:
       handleNumber(event.key);
