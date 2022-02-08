@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+.result,
+button {
+  font-family: "Supermercado One", cursive;
+}
+
 body {
   background-color: rgb(255, 152, 34);
   height: 100vh;
