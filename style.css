@@ -79,9 +79,9 @@ button {
   background-color: tomato;
 }
 .ac {
-  background-color: black;
-  color: white;
+  background-color: lightblue;
 }
 .clear {
-  background-color: lightblue;
+  background-color: black;
+  color: white;
 }
